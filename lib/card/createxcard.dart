@@ -7,7 +7,7 @@ import '../utils/media.dart';
 import '../utils/string.dart';
 
 class Createxcard extends StatefulWidget {
-  const Createxcard({Key? key}) : super(key: key);
+  const Createxcard({super.key});
 
   @override
   State<Createxcard> createState() => _CreatexcardState();
@@ -19,12 +19,8 @@ class _CreatexcardState extends State<Createxcard> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   final int _numPages = 5;
   final PageController _pageController = PageController(initialPage: 0);

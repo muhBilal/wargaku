@@ -8,7 +8,7 @@ import '../../../utils/string.dart';
 import '../topupcard/confirmpayment.dart';
 
 class TopPhoneAmount extends StatefulWidget {
-  const TopPhoneAmount({Key? key}) : super(key: key);
+  const TopPhoneAmount({super.key});
 
   @override
   State<TopPhoneAmount> createState() => _TopPhoneAmountState();
@@ -20,12 +20,8 @@ class _TopPhoneAmountState extends State<TopPhoneAmount> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   final List<Map> _myjson = [
     {

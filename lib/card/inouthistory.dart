@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../utils/colornotifire.dart';
 
 class InOutHistory extends StatefulWidget {
-  const InOutHistory({Key? key}) : super(key: key);
+  const InOutHistory({super.key});
 
   @override
   State<InOutHistory> createState() => _InOutHistoryState();
@@ -18,12 +18,8 @@ class _InOutHistoryState extends State<InOutHistory> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   List img = [
     "images/mcd.png",

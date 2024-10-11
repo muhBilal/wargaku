@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Onbonding extends StatefulWidget {
-  const Onbonding({Key? key}) : super(key: key);
+  const Onbonding({super.key});
 
   @override
   State<Onbonding> createState() => _OnbondingState();
@@ -32,12 +32,8 @@ class _OnbondingState extends State<Onbonding> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   Widget _indicator(bool isActive) {
     return AnimatedContainer(

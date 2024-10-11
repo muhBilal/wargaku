@@ -8,7 +8,7 @@ import '../utils/colornotifire.dart';
 import '../utils/textfeilds.dart';
 
 class ForgotPassword extends StatefulWidget {
-  const ForgotPassword({Key? key}) : super(key: key);
+  const ForgotPassword({super.key});
 
   @override
   State<ForgotPassword> createState() => _ForgotPasswordState();
@@ -20,12 +20,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   @override
   Widget build(BuildContext context) {

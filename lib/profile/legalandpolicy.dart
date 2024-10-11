@@ -8,7 +8,7 @@ import '../utils/media.dart';
 class LegalPolicy extends StatefulWidget {
   final String title;
 
-  const LegalPolicy(this.title, {Key? key}) : super(key: key);
+  const LegalPolicy(this.title, {super.key});
 
   @override
   State<LegalPolicy> createState() => _LegalPolicyState();
@@ -20,12 +20,8 @@ class _LegalPolicyState extends State<LegalPolicy> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   @override
   Widget build(BuildContext context) {

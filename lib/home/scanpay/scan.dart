@@ -10,7 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils/colornotifire.dart';
 
 class Scan extends StatefulWidget {
-  const Scan({Key? key}) : super(key: key);
+  const Scan({super.key});
 
   @override
   State<Scan> createState() => _ScanState();
@@ -35,12 +35,8 @@ class _ScanState extends State<Scan> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   List imgs = [
     "images/pay1.png",

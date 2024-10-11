@@ -9,7 +9,7 @@ import 'inouthistory.dart';
 import 'inoutscheduled.dart';
 
 class InOutPayment extends StatefulWidget {
-  const InOutPayment({Key? key}) : super(key: key);
+  const InOutPayment({super.key});
 
   @override
   State<InOutPayment> createState() => _InOutPaymentState();
@@ -22,12 +22,8 @@ class _InOutPaymentState extends State<InOutPayment>
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   TabController? controller;
   List<Widget> tabs = [

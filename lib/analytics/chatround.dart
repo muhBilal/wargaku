@@ -7,7 +7,7 @@ import '../utils/media.dart';
 import '../utils/string.dart';
 
 class ChatRound extends StatefulWidget {
-  const ChatRound({Key? key}) : super(key: key);
+  const ChatRound({super.key});
 
   @override
   State<ChatRound> createState() => _ChatRoundState();
@@ -20,12 +20,8 @@ class _ChatRoundState extends State<ChatRound> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   List historyimg = [
     "images/starbuckscoffee.png",

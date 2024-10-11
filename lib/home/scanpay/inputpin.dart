@@ -11,7 +11,7 @@ import '../../utils/media.dart';
 import '../../utils/string.dart';
 
 class InputPin extends StatefulWidget {
-  const InputPin({Key? key}) : super(key: key);
+  const InputPin({super.key});
 
   @override
   State<InputPin> createState() => _InputPinState();

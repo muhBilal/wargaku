@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 import '../utils/button.dart';
 
 class ConfirmPin extends StatefulWidget {
-  const ConfirmPin({Key? key}) : super(key: key);
+  const ConfirmPin({super.key});
 
   @override
   State<ConfirmPin> createState() => _ConfirmPinState();

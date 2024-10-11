@@ -7,7 +7,7 @@ import '../utils/colornotifire.dart';
 import '../utils/itextfield.dart';
 
 class ChangePassword extends StatefulWidget {
-  const ChangePassword({Key? key}) : super(key: key);
+  const ChangePassword({super.key});
 
   @override
   State<ChangePassword> createState() => _ChangePasswordState();
@@ -32,12 +32,8 @@ class _ChangePasswordState extends State<ChangePassword> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   @override
   Widget build(BuildContext context) {

@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 import '../../utils/button.dart';
 
 class TransferConfirm extends StatefulWidget {
-  const TransferConfirm({Key? key}) : super(key: key);
+  const TransferConfirm({super.key});
 
   @override
   State<TransferConfirm> createState() => _TransferConfirmState();

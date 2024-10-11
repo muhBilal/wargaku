@@ -8,7 +8,7 @@ import '../utils/colornotifire.dart';
 import '../utils/string.dart';
 
 class Seeallpayment extends StatefulWidget {
-  const Seeallpayment({Key? key}) : super(key: key);
+  const Seeallpayment({super.key});
 
   @override
   State<Seeallpayment> createState() => _SeeallpaymentState();
@@ -20,12 +20,8 @@ class _SeeallpaymentState extends State<Seeallpayment> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   List insuranceimg = [
     "images/health.png",

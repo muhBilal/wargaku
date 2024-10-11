@@ -7,7 +7,7 @@ import '../../utils/media.dart';
 import '../../utils/string.dart';
 
 class SendMoney extends StatefulWidget {
-  const SendMoney({Key? key}) : super(key: key);
+  const SendMoney({super.key});
 
   @override
   State<SendMoney> createState() => _SendMoneyState();
@@ -20,12 +20,8 @@ class _SendMoneyState extends State<SendMoney>
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   TabController? controller;
   List<Widget> tabs = [

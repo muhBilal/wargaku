@@ -9,7 +9,7 @@ import '../utils/string.dart';
 import '../utils/textfeilds.dart';
 
 class Register extends StatefulWidget {
-  const Register({Key? key}) : super(key: key);
+  const Register({super.key});
 
   @override
   State<Register> createState() => _RegisterState();
@@ -21,12 +21,8 @@ class _RegisterState extends State<Register> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   @override
   Widget build(BuildContext context) {

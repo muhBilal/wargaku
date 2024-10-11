@@ -8,7 +8,7 @@ import 'package:gobank/utils/string.dart';
 import 'package:provider/provider.dart';
 
 class ScanDone extends StatefulWidget {
-  const ScanDone({Key? key}) : super(key: key);
+  const ScanDone({super.key});
 
   @override
   State<ScanDone> createState() => _ScanDoneState();

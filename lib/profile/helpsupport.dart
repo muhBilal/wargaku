@@ -8,7 +8,7 @@ import '../utils/media.dart';
 
 class HelpSupport extends StatefulWidget {
   final String title;
-  const HelpSupport(this.title, {Key? key}) : super(key: key);
+  const HelpSupport(this.title, {super.key});
 
   @override
   State<HelpSupport> createState() => _HelpSupportState();

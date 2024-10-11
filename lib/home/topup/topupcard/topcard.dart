@@ -8,7 +8,7 @@ import '../../../utils/media.dart';
 import 'confirmpayment.dart';
 
 class TopCard extends StatefulWidget {
-  const TopCard({Key? key}) : super(key: key);
+  const TopCard({super.key});
 
   @override
   State<TopCard> createState() => _TopCardState();
@@ -21,12 +21,8 @@ class _TopCardState extends State<TopCard> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   List img = [
     "images/citi.png",

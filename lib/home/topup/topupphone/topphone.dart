@@ -8,7 +8,7 @@ import '../../../utils/media.dart';
 import '../../../utils/string.dart';
 
 class TopPhone extends StatefulWidget {
-  const TopPhone({Key? key}) : super(key: key);
+  const TopPhone({super.key});
 
   @override
   State<TopPhone> createState() => _TopPhoneState();
@@ -20,12 +20,8 @@ class _TopPhoneState extends State<TopPhone> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   final int _numPages = 4;
   final PageController _pageController = PageController(initialPage: 0);

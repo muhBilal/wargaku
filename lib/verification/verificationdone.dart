@@ -7,7 +7,7 @@ import '../bottombar/bottombar.dart';
 import '../utils/button.dart';
 
 class VerificationDone extends StatefulWidget {
-  const VerificationDone({Key? key}) : super(key: key);
+  const VerificationDone({super.key});
 
   @override
   State<VerificationDone> createState() => _VerificationDoneState();

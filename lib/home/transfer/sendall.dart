@@ -7,7 +7,7 @@ import '../../utils/media.dart';
 import '../../utils/string.dart';
 
 class SendAll extends StatefulWidget {
-  const SendAll({Key? key}) : super(key: key);
+  const SendAll({super.key});
 
   @override
   State<SendAll> createState() => _SendAllState();
@@ -19,12 +19,8 @@ class _SendAllState extends State<SendAll> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   List nametxt = [
     CustomStrings.tiana,

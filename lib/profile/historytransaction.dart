@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../utils/colornotifire.dart';
 
 class HistoryTransaction extends StatefulWidget {
-  const HistoryTransaction({Key? key}) : super(key: key);
+  const HistoryTransaction({super.key});
 
   @override
   State<HistoryTransaction> createState() => _HistoryTransactionState();
@@ -19,12 +19,8 @@ class _HistoryTransactionState extends State<HistoryTransaction> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   List todayimg = ["images/history1.png","images/history2.png"];
   List todaytxt = [CustomStrings.tiana,CustomStrings.figma];

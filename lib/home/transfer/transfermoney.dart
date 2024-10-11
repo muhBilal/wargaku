@@ -7,7 +7,7 @@ import '../../utils/media.dart';
 import '../../utils/string.dart';
 
 class TransferMoney extends StatefulWidget {
-  const TransferMoney({Key? key}) : super(key: key);
+  const TransferMoney({super.key});
 
   @override
   State<TransferMoney> createState() => _TransferMoneyState();
@@ -19,12 +19,8 @@ class _TransferMoneyState extends State<TransferMoney> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   final List<Map> _myjson = [
     {

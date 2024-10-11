@@ -7,7 +7,7 @@ import '../../utils/string.dart';
 import 'all.dart';
 
 class Request extends StatefulWidget {
-  const Request({Key? key}) : super(key: key);
+  const Request({super.key});
 
   @override
   State<Request> createState() => _RequestState();
@@ -19,12 +19,8 @@ class _RequestState extends State<Request> with SingleTickerProviderStateMixin {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   TabController? controller;
   List<Widget> tabs = [

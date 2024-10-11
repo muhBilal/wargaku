@@ -2,19 +2,19 @@ import 'dart:ui';
 
 class ClassesCustomColorsHex
 {
-	String _main = "#ef5350";
+	final String _main = "#ef5350";
 	String get getMain => _main;
 	
-	String _mainHover = "#a5d6a7";
+	final String _mainHover = "#a5d6a7";
 	String get getMainHover => _mainHover;
 	
-	String _mainOpacity = "#4caf5026";
+	final String _mainOpacity = "#4caf5026";
 	String get getMainOpacity => _mainOpacity;
 
-	String _second = "#ffab91";
+	final String _second = "#ffab91";
 	String get getSecond => _second;
 
-	String _third = "#b0bec5";
+	final String _third = "#b0bec5";
 	String get getThird => _third;
 }
 

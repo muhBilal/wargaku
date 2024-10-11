@@ -7,7 +7,7 @@ import 'package:gobank/verification/scandone.dart';
 import 'package:provider/provider.dart';
 
 class VerifiyIdenty extends StatefulWidget {
-  const VerifiyIdenty({Key? key}) : super(key: key);
+  const VerifiyIdenty({super.key});
 
   @override
   State<VerifiyIdenty> createState() => _VerifiyIdentyState();

@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 import '../utils/button.dart';
 
 class Setyourpin extends StatefulWidget {
-  const Setyourpin({Key? key}) : super(key: key);
+  const Setyourpin({super.key});
 
   @override
   State<Setyourpin> createState() => _SetyourpinState();

@@ -8,7 +8,7 @@ import '../utils/profiletextfield.dart';
 import '../utils/string.dart';
 
 class MyProfile extends StatefulWidget {
-  const MyProfile({Key? key}) : super(key: key);
+  const MyProfile({super.key});
 
   @override
   State<MyProfile> createState() => _MyProfileState();
@@ -20,12 +20,8 @@ class _MyProfileState extends State<MyProfile> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   @override
   void initState() {

@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MyCard extends StatefulWidget {
-  const MyCard({Key? key}) : super(key: key);
+  const MyCard({super.key});
 
   @override
   State<MyCard> createState() => _MyCardState();
@@ -19,12 +19,8 @@ class _MyCardState extends State<MyCard> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   @override
   Widget build(BuildContext context) {

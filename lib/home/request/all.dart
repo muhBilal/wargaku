@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils/colornotifire.dart';
 
 class All extends StatefulWidget {
-  const All({Key? key}) : super(key: key);
+  const All({super.key});
 
   @override
   State<All> createState() => _AllState();
@@ -20,12 +20,8 @@ class _AllState extends State<All> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   List nametxt = [
     CustomStrings.tiana,

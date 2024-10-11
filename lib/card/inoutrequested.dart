@@ -6,7 +6,7 @@ import '../utils/media.dart';
 import '../utils/string.dart';
 
 class InOutrequested extends StatefulWidget {
-  const InOutrequested({Key? key}) : super(key: key);
+  const InOutrequested({super.key});
 
   @override
   State<InOutrequested> createState() => _InOutrequestedState();
@@ -18,12 +18,8 @@ class _InOutrequestedState extends State<InOutrequested> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   List img = [
     "images/mcd.png",

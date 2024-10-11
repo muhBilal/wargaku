@@ -8,7 +8,7 @@ import '../utils/media.dart';
 import 'chatround.dart';
 
 class Analytics extends StatefulWidget {
-  const Analytics({Key? key}) : super(key: key);
+  const Analytics({super.key});
 
   @override
   State<Analytics> createState() => _AnalyticsState();
@@ -21,12 +21,8 @@ class _AnalyticsState extends State<Analytics>
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   TabController? controller;
   DateTime selectedDate = DateTime.now();

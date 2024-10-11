@@ -8,7 +8,7 @@ import '../utils/colornotifire.dart';
 
 class Notificationindex extends StatefulWidget {
   final String title;
-  const Notificationindex(this.title, {Key? key}) : super(key: key);
+  const Notificationindex(this.title, {super.key});
 
   @override
   State<Notificationindex> createState() => _NotificationindexState();
@@ -20,12 +20,8 @@ class _NotificationindexState extends State<Notificationindex> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   List notificationtxt = [
     CustomStrings.successfully,

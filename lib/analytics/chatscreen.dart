@@ -7,7 +7,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 import '../utils/colornotifire.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({Key? key}) : super(key: key);
+  const ChatScreen({super.key});
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
@@ -19,12 +19,8 @@ class _ChatScreenState extends State<ChatScreen> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   @override
   void initState() {
@@ -405,9 +401,9 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Widget columnchart() {
-    return SfCartesianChart(
+    return const SfCartesianChart(
       primaryXAxis: CategoryAxis(interval: 10),
-      annotations: const <CartesianChartAnnotation>[
+      annotations: <CartesianChartAnnotation>[
         CartesianChartAnnotation(
             coordinateUnit: CoordinateUnit.percentage,
             region: AnnotationRegion.plotArea,

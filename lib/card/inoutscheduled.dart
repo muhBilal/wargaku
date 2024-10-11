@@ -7,7 +7,7 @@ import '../utils/media.dart';
 import '../utils/string.dart';
 
 class InOutScheduled extends StatefulWidget {
-  const InOutScheduled({Key? key}) : super(key: key);
+  const InOutScheduled({super.key});
 
   @override
   State<InOutScheduled> createState() => _InOutScheduledState();
@@ -19,12 +19,8 @@ class _InOutScheduledState extends State<InOutScheduled> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
   List paymentname = [
     CustomStrings.mcdonaldsorders,
     CustomStrings.airbnb,

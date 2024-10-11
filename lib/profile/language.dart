@@ -6,7 +6,7 @@ import '../utils/media.dart';
 import '../utils/string.dart';
 
 class Language extends StatefulWidget {
-  const Language({Key? key}) : super(key: key);
+  const Language({super.key});
 
   @override
   State<Language> createState() => _LanguageState();
@@ -19,12 +19,8 @@ class _LanguageState extends State<Language> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -165,7 +161,7 @@ class _LanguageState extends State<Language> {
       onTap: () {
         setState(
           () {
-            _groupValue = val as int;
+            _groupValue = val;
           },
         );
       },

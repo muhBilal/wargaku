@@ -7,7 +7,7 @@ import '../utils/media.dart';
 import '../utils/string.dart';
 
 class Seealltransaction extends StatefulWidget {
-  const Seealltransaction({Key? key}) : super(key: key);
+  const Seealltransaction({super.key});
 
   @override
   State<Seealltransaction> createState() => _SeealltransactionState();
@@ -19,12 +19,8 @@ class _SeealltransactionState extends State<Seealltransaction> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   List transaction = [
     "images/starbuckscoffee.png",

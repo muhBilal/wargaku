@@ -9,7 +9,7 @@ import '../../../utils/media.dart';
 import '../../../utils/string.dart';
 
 class Topup extends StatefulWidget {
-  const Topup({Key? key}) : super(key: key);
+  const Topup({super.key});
 
   @override
   State<Topup> createState() => _TopupState();
@@ -21,12 +21,8 @@ class _TopupState extends State<Topup> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   @override
   Widget build(BuildContext context) {

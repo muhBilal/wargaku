@@ -1,15 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:gobank/bottombar/bottombar.dart';
 import 'package:gobank/bottombar/navbottom.dart';
-import 'package:gobank/home/home.dart';
 import 'package:gobank/utils/colornotifire.dart';
 import 'package:gobank/utils/media.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'onbonding.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -24,12 +21,8 @@ class _SplashscreenState extends State<Splashscreen> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   @override
   void initState() {

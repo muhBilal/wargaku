@@ -8,7 +8,7 @@ import '../../utils/media.dart';
 import '../../utils/string.dart';
 
 class RequestPayment extends StatefulWidget {
-  const RequestPayment({Key? key}) : super(key: key);
+  const RequestPayment({super.key});
 
   @override
   State<RequestPayment> createState() => _RequestPaymentState();
@@ -20,12 +20,8 @@ class _RequestPaymentState extends State<RequestPayment> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   final List<Map> _myjson = [
     {

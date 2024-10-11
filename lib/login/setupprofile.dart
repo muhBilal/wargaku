@@ -9,7 +9,7 @@ import '../utils/normaltextfild.dart';
 import '../utils/string.dart';
 
 class SetupProfile extends StatefulWidget {
-  const SetupProfile({Key? key}) : super(key: key);
+  const SetupProfile({super.key});
 
   @override
   State<SetupProfile> createState() => _SetupProfileState();
@@ -21,12 +21,8 @@ class _SetupProfileState extends State<SetupProfile> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   String dropdownvalue = '01';
   String monthvalue = 'Jan';

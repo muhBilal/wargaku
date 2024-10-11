@@ -8,7 +8,7 @@ import '../utils/colornotifire.dart';
 import '../utils/media.dart';
 
 class Notifications extends StatefulWidget {
-  const Notifications({Key? key}) : super(key: key);
+  const Notifications({super.key});
 
   @override
   State<Notifications> createState() => _NotificationsState();
@@ -24,12 +24,8 @@ class _NotificationsState extends State<Notifications> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   @override
   Widget build(BuildContext context) {

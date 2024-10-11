@@ -11,7 +11,7 @@ import '../card/mycard.dart';
 import '../profile/profile.dart';
 
 class Bottombar extends StatefulWidget {
-  const Bottombar({Key? key}) : super(key: key);
+  const Bottombar({super.key});
 
   @override
   State<Bottombar> createState() => _BottombarState();
@@ -35,12 +35,8 @@ class _BottombarState extends State<Bottombar> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   @override
   void initState() {

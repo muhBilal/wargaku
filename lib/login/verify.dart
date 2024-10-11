@@ -12,7 +12,7 @@ import '../utils/media.dart';
 import '../utils/string.dart';
 
 class Verify extends StatefulWidget {
-  const Verify({Key? key}) : super(key: key);
+  const Verify({super.key});
 
   @override
   State<Verify> createState() => _VerifyState();
@@ -24,12 +24,8 @@ class _VerifyState extends State<Verify> {
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
-    if (previusstate == null) {
-      notifire.setIsDark = false;
-    } else {
-      notifire.setIsDark = previusstate;
+    notifire.setIsDark = previusstate;
     }
-  }
 
   @override
   Widget build(BuildContext context) {
