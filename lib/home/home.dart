@@ -105,68 +105,39 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     notifire = Provider.of<ColorNotifire>(context, listen: true);
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        backgroundColor: notifire.getprimerycolor,
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              CustomStrings.goodmorning,
-              style: TextStyle(
-                  color: notifire.getdarkgreycolor,
-                  fontSize: 14,
-                  fontFamily: 'Gilroy Medium'),
-            ),
-            Text(
-              CustomStrings.hello,
-              style: TextStyle(
-                  color: notifire.getdarkscolor,
-                  fontSize: 20,
-                  fontFamily: 'Gilroy Bold'),
-            ),
-          ],
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(height / 9),
+        child: AppBar(
+          elevation: 0,
+          automaticallyImplyLeading: false,
+          backgroundColor: notifire.getprimerycolor,
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding: const EdgeInsets.only(top: 60.0, bottom: 60.0, left: 10),
+                child: Row(
+                  children: [
+                    Image.asset(
+                      "images/man2.png",
+                      scale: 4,
+                    ),
+                    SizedBox(
+                      width: width / 20,
+                    ),
+                    Text(
+                      CustomStrings.hello,
+                      style: TextStyle(
+                          color: notifire.getdarkscolor,
+                          fontSize: 20,
+                          fontFamily: 'Gilroy Bold'),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
-        actions: [
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const MyCard(),
-                ),
-              );
-            },
-            child: Image.asset(
-              "images/message1.png",
-              color: notifire.getdarkscolor,
-              scale: 4,
-            ),
-          ),
-          const SizedBox(
-            width: 15,
-          ),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) =>
-                      const Notificationindex(CustomStrings.notification),
-                ),
-              );
-            },
-            child: Image.asset(
-              "images/notification.png",
-              color: notifire.getdarkscolor,
-              scale: 4,
-            ),
-          ),
-          const SizedBox(
-            width: 10,
-          )
-        ],
       ),
       backgroundColor: notifire.getprimerycolor,
       body: Column(
