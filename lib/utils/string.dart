@@ -242,7 +242,7 @@ class CustomStrings {
   static const String discoverservices = 'Discover Services';
   static const String totalwalletbalance = 'Total Wallet Balance';
   static const String scanpay = 'Scan';
-  static const String hello = 'Hello Johan shaikh';
+  static const String hello = 'Hello Bilal';
   static const String goodmorning = 'Good Morning,';
   static const String verityme = 'Verify Me';
   static const String verification1 =
