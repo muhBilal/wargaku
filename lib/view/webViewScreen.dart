@@ -12,12 +12,34 @@ class WebViewScreen extends StatefulWidget {
 
 class WebViewScreenState extends State<WebViewScreen> {
   late WebViewController controller;
+  bool isLoading = true;
 
   @override
   void initState() {
     super.initState();
     controller = WebViewController()
+    //   ..setJavaScriptMode(JavaScriptMode.unrestricted)
+    //   ..loadRequest(Uri.parse(widget.appUrl));
+    //
+    // controller.onPageFinished.listen((_) {
+    //   setState(() {
+    //     isLoading = false;
+    //   });
+    // });
+    controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
+      ..setNavigationDelegate(NavigationDelegate(
+        onPageStarted: (String url) {
+          setState(() {
+            isLoading = true; // Start loading
+          });
+        },
+        onPageFinished: (String url) {
+          setState(() {
+            isLoading = false; // Finish loading
+          });
+        },
+      ))
       ..loadRequest(Uri.parse(widget.appUrl));
   }
 
@@ -29,3 +51,4 @@ class WebViewScreenState extends State<WebViewScreen> {
     );
   }
 }
+

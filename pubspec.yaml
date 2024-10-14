@@ -58,6 +58,7 @@ dependencies:
   get: any
   otp_text_field: ^1.1.3
   webview_flutter: ^4.8.0
+  lottie: ^1.2.0
 
 
  # flutter_localizations:
@@ -89,6 +90,7 @@ flutter:
     - images/
     - images/icon/
     - data/
+    - images/animation/loading.json
 
   # To add assets to your application, add an assets section, like this:
   # assets:
