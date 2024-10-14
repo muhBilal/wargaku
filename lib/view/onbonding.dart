@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:gobank/view/login/login.dart';
-import 'package:gobank/view/utils/colornotifire.dart';
-import 'package:gobank/view/utils/media.dart';
-import 'package:gobank/view/utils/string.dart';
+import 'package:wargaku/view/login/login.dart';
+import 'package:wargaku/view/utils/colornotifire.dart';
+import 'package:wargaku/view/utils/media.dart';
+import 'package:wargaku/view/utils/string.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

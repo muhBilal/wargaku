@@ -1,4 +1,4 @@
-package com.example.gobank
+package com.example.wargaku
 
 import io.flutter.embedding.android.FlutterActivity
 

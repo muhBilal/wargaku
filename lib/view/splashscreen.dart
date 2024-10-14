@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:gobank/view/bottombar/navbottom.dart';
-import 'package:gobank/view/utils/colornotifire.dart';
-import 'package:gobank/view/utils/media.dart';
+import 'package:wargaku/view/bottombar/navbottom.dart';
+import 'package:wargaku/view/utils/colornotifire.dart';
+import 'package:wargaku/view/utils/media.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

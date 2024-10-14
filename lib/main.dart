@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:gobank/provider/category_provider.dart';
-import 'package:gobank/view/splashscreen.dart';
-import 'package:gobank/view/utils/colornotifire.dart';
+import 'package:wargaku/provider/category_provider.dart';
+import 'package:wargaku/view/splashscreen.dart';
+import 'package:wargaku/view/utils/colornotifire.dart';
 import 'package:provider/provider.dart';
 
 void main() {

@@ -1,0 +1,81 @@
+    [
+        {
+            "category": "kesehatan",
+            "image_url": "https://picsum.photos/200/300?random=1",
+            "data": [
+                {
+                    "name": "e-Health",
+                    "image_url": "https://picsum.photos/500/500?random=3",
+                    "app_url": "https://ehealth.surabaya.go.id/pendaftaranv2/"
+                },
+                {
+                    "name": "puskesmas",
+                    "image_url": "https://picsum.photos/500/500?random=3",
+                    "app_url": "https://ehealth.surabaya.go.id/pendaftaranv2/"
+                },
+                {
+                    "name": "Pemeriksaan Catin",
+                    "image_url": "https://picsum.photos/500/500?random=4",
+                    "app_url": "https://dinkes.surabaya.go.id/catin/"
+                }
+            ]
+        },
+    {
+        "category": "pendidikan",
+        "image_url": "https://picsum.photos/200/300?random=5",
+        "data": [
+            {
+                "name": "PPDB SD",
+                "image_url": "https://picsum.photos/200/300?random=6",
+                "app_url": "https://ppdbsd.id"
+            },
+            {
+                "name": "PPDB SMP",
+                "image_url": "https://picsum.photos/200/300?random=7",
+                "app_url": "https://ppdbsmp.id"
+            }
+        ]
+    },
+    {
+        "category": "kemiskinan",
+        "image_url": "https://picsum.photos/200/300?random=8",
+        "data": [
+            {
+                "name": "Pengaduan Masyarakat",
+                "image_url": "https://picsum.photos/200/300?random=9",
+                "app_url": "https://pengaduan.id"
+            },
+            {
+                "name": "PPID",
+                "image_url": "https://picsum.photos/200/300?random=10",
+                "app_url": "https://ppid.id"
+            },
+            {
+                "name": "JDIH Kota Surabaya",
+                "image_url": "https://picsum.photos/200/300?random=11",
+                "app_url": "https://jdih.surabaya.go.id"
+            }
+        ]
+    },
+    {
+        "category": "perizinan",
+        "image_url": "https://picsum.photos/200/300?random=12",
+        "data": [
+            {
+                "name": "SSW Alfa",
+                "image_url": "https://picsum.photos/200/300?random=13",
+                "app_url": "https://ssw.alfa.id"
+            },
+            {
+                "name": "Klampid",
+                "image_url": "https://picsum.photos/200/300?random=14",
+                "app_url": "https://klampid.id"
+            },
+            {
+                "name": "SKM",
+                "image_url": "https://picsum.photos/200/300?random=15",
+                "app_url": "https://skm.id"
+            }
+        ]
+    }
+]
