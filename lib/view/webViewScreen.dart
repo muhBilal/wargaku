@@ -17,7 +17,7 @@ class WebViewScreenState extends State<WebViewScreen> {
   @override
   void initState() {
     super.initState();
-    controller = WebViewController()
+    controller = WebViewController();
     //   ..setJavaScriptMode(JavaScriptMode.unrestricted)
     //   ..loadRequest(Uri.parse(widget.appUrl));
     //
@@ -46,7 +46,7 @@ class WebViewScreenState extends State<WebViewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Flutter Simple Example')),
+      appBar: AppBar(title: const Text('Wargaku')),
       body: WebViewWidget(controller: controller),
     );
   }

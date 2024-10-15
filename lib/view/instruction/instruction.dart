@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:wargaku/view/home/topup/topupcard/topcard.dart';
-import 'package:wargaku/view/home/topup/topupphone/topphone.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../../utils/colornotifire.dart';
-import '../../../utils/media.dart';
-import '../../../utils/string.dart';
+import '../utils/colornotifire.dart';
+import '../utils/media.dart';
+import '../utils/string.dart';
 
-class Topup extends StatefulWidget {
-  const Topup({super.key});
+class Instruction extends StatefulWidget {
+  const Instruction({super.key});
 
   @override
-  State<Topup> createState() => _TopupState();
+  State<Instruction> createState() => _InstructionState();
 }
 
-class _TopupState extends State<Topup> {
+class _InstructionState extends State<Instruction> {
   late ColorNotifire notifire;
 
   getdarkmodepreviousstate() async {
@@ -65,34 +65,27 @@ class _TopupState extends State<Topup> {
                 Column(
                   children: [
                     SizedBox(
-                      height: height / 30,
+                      height: height / 20,
                     ),
-                    Image.asset("images/top.png"),
+                    Padding(
+                      padding: const EdgeInsets.all(40.0),
+                      child: Image.asset("images/illustration/information-1.png"),
+                    ),
                     SizedBox(
                       height: height / 30,
                     ),
                     Text(
-                      CustomStrings.top1,
+                      "Petunjuk Penggunaan Aplikasi",
                       style: TextStyle(
                           color: notifire.getdarkscolor,
-                          fontSize: height / 40,
-                          fontFamily: 'Gilroy Bold'),
-                    ),
-                    SizedBox(
-                      height: height / 200,
-                    ),
-                    Text(
-                      CustomStrings.top2,
-                      style: TextStyle(
-                          color: notifire.getdarkscolor,
-                          fontSize: height / 40,
+                          fontSize: height / 35,
                           fontFamily: 'Gilroy Bold'),
                     ),
                     SizedBox(
                       height: height / 30,
                     ),
                     Text(
-                      CustomStrings.top3,
+                      "Silahkan unduh dokumen di bawah ini untuk",
                       style: TextStyle(
                           color: notifire.getdarkgreycolor,
                           fontSize: height / 60,
@@ -102,7 +95,7 @@ class _TopupState extends State<Topup> {
                       height: height / 200,
                     ),
                     Text(
-                      CustomStrings.top4,
+                      "melihat petunjuk penggunaan aplikasi",
                       style: TextStyle(
                           color: notifire.getdarkgreycolor,
                           fontSize: height / 60,
@@ -112,36 +105,21 @@ class _TopupState extends State<Topup> {
                       height: height / 20,
                     ),
                     GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const TopCard(),
-                            ),
-                          );
+                        onTap: () async {
+                          const url = 'https://api-mc.surabaya.go.id/panduan/Panduan_WargaKu_MC_Warga_20032021.pdf';
+                          if (await canLaunchUrl(Uri.parse(url))) {
+                            await launchUrl(Uri.parse(url));
+                          } else {
+                            throw 'Could not launch $url';
+                          }
                         },
                         child: scannerbutton(
                           notifire.getbluecolor,
-                          CustomStrings.topcredit,
+                          "Petunjuk Penggunaan",
                           Colors.white,
                         )),
                     SizedBox(
                       height: height / 50,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const TopPhone(),
-                          ),
-                        );
-                      },
-                      child: scannerbutton(
-                        Colors.white,
-                        CustomStrings.topphone,
-                        notifire.getbluecolor,
-                      ),
                     ),
                   ],
                 ),

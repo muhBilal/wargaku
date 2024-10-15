@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wargaku/view/card/mycard.dart';
 import 'package:wargaku/view/home/home.dart';
+import 'package:wargaku/view/instruction/instruction.dart';
 import 'package:wargaku/view/profile/profile.dart';
 
 class Navbottom extends StatefulWidget {
@@ -11,11 +12,12 @@ class Navbottom extends StatefulWidget {
 }
 
 class _NavbottomState extends State<Navbottom> {
-  int currIndex = 0;
+  // int currIndex = 0;
+  int currIndex = 2;
 
   @override
   Widget build(BuildContext context) {
-    List pages = const [Home(), Profile(), MyCard()];
+    List pages = const [Home(), MyCard(), Instruction(), Profile()];
 
     return Scaffold(
       body: Stack(
@@ -67,6 +69,7 @@ class _NavbottomState extends State<Navbottom> {
                       ),
                       label: "",
                     ),
+                    //add for news
                     BottomNavigationBarItem(
                       icon: Container(
                         padding: const EdgeInsets.all(12),
@@ -75,7 +78,7 @@ class _NavbottomState extends State<Navbottom> {
                               currIndex == 1 ? Colors.red : Colors.transparent,
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        child: Icon(Icons.document_scanner,
+                        child: Icon(Icons.newspaper,
                             color:
                                 currIndex == 1 ? Colors.white : Colors.black45),
                       ),
@@ -89,9 +92,23 @@ class _NavbottomState extends State<Navbottom> {
                               currIndex == 2 ? Colors.red : Colors.transparent,
                           borderRadius: BorderRadius.circular(30),
                         ),
-                        child: Icon(Icons.person,
+                        child: Icon(Icons.document_scanner,
                             color:
                                 currIndex == 2 ? Colors.white : Colors.black45),
+                      ),
+                      label: "",
+                    ),
+                    BottomNavigationBarItem(
+                      icon: Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color:
+                              currIndex == 3 ? Colors.red : Colors.transparent,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Icon(Icons.person,
+                            color:
+                                currIndex == 3 ? Colors.white : Colors.black45),
                       ),
                       label: "",
                     ),
