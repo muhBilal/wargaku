@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:wargaku/view/bottombar/navbottom.dart';
 import 'package:wargaku/view/utils/colornotifire.dart';
 import 'package:wargaku/view/utils/media.dart';
 import 'package:wargaku/view/utils/string.dart';
 import 'package:provider/provider.dart';
-import '../bottombar/bottombar.dart';
 import '../utils/button.dart';
 
 class VerificationDone extends StatefulWidget {
@@ -61,7 +61,7 @@ class _VerificationDoneState extends State<VerificationDone> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Bottombar(),
+                        builder: (context) => const Navbottom(),
                       ),
                     );
                   },

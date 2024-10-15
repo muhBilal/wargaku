@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wargaku/view/bottombar/bottombar.dart';
+import 'package:wargaku/view/bottombar/navbottom.dart';
 import 'package:wargaku/view/card/inoutpayment.dart';
 import 'package:wargaku/view/utils/colornotifire.dart';
 import 'package:wargaku/view/utils/media.dart';
@@ -151,7 +151,7 @@ class _TransferConfirmState extends State<TransferConfirm> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Bottombar(),
+                        builder: (context) => const Navbottom(),
                       ),
                     );
                   },

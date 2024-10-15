@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:wargaku/view/bottombar/navbottom.dart';
 import 'package:wargaku/view/card/inoutpayment.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../bottombar/bottombar.dart';
 import '../../utils/colornotifire.dart';
 import '../../utils/media.dart';
 import '../../utils/string.dart';
@@ -549,7 +549,7 @@ class _RequestPaymentState extends State<RequestPayment> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Bottombar(),
+                        builder: (context) => const Navbottom(),
                       ),
                     );
                   },

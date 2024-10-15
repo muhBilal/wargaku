@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // primaryColor: Colors.white,
-        primaryColor: Color(0xffF7F7F9),
+        primaryColor: const Color(0xffF7F7F9),
         colorScheme: const ColorScheme.light().copyWith(
-          primary: Color(0xffF7F7F9),
+          primary: const Color(0xffF7F7F9),
         ),
       ),
     );

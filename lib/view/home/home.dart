@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:wargaku/view/utils/weather_chart.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -42,25 +43,32 @@ class _HomeState extends State<Home> with ChangeNotifier {
     notifire.setIsDark = previusstate;
   }
 
-  List img = [
-    "images/mobile.png",
-    "images/shopping.png",
-    "images/water.png",
-    "images/wifi1.png",
-    "images/assurance.png",
-    "images/ticket.png",
-    "images/bill.png",
-    "images/categories.png",
-  ];
-  List paymentname = [
-    CustomStrings.nearbystores,
-    CustomStrings.onlineshopping,
-    CustomStrings.travelflight,
-    CustomStrings.eventsmovies,
-    CustomStrings.buyinsurance,
-    CustomStrings.getfastag,
-    CustomStrings.buyelectronic,
-    CustomStrings.allservices,
+  final List<Map<String, String>> newsItems = [
+    {
+      'image': 'https://picsum.photos/200/300?random=1',
+      'title': 'Judul Berita 1',
+      'date': '15 Oktober 2024',
+    },
+    {
+      'image': 'https://picsum.photos/200/300?random=2',
+      'title': 'Judul Berita 2',
+      'date': '16 Oktober 2024',
+    },
+    {
+      'image': 'https://picsum.photos/200/300?random=3',
+      'title': 'Judul Berita 3',
+      'date': '17 Oktober 2024',
+    },
+    {
+      'image': 'https://picsum.photos/200/300?random=4',
+      'title': 'Judul Berita 4',
+      'date': '18 Oktober 2024',
+    },
+    {
+      'image': 'https://picsum.photos/200/300?random=5',
+      'title': 'Judul Berita 5',
+      'date': '19 Oktober 2024',
+    },
   ];
 
   @override
@@ -116,7 +124,8 @@ class _HomeState extends State<Home> with ChangeNotifier {
                           children: [
                             SizedBox(height: height / 6),
                             Container(
-                              margin: const EdgeInsets.only(left: 25, bottom: 20),
+                              margin:
+                                  const EdgeInsets.only(left: 25, bottom: 15),
                               child: Text(
                                 "Keterlibatan Warga untuk Perubahan!",
                                 style: TextStyle(
@@ -132,6 +141,147 @@ class _HomeState extends State<Home> with ChangeNotifier {
                                 location: 'Surabaya, Indonesia',
                               ),
                             ),
+                            SizedBox(height: height / 40),
+                            Padding(
+                              padding:
+                                  EdgeInsets.symmetric(horizontal: width / 18),
+                              child: Row(
+                                children: [
+                                  Text(
+                                   "Berita Terkini",
+                                    style: TextStyle(
+                                        fontFamily: "Gilroy Bold",
+                                        color: notifire.getdarkscolor,
+                                        fontSize: height / 40),
+                                  ),
+                                  const Spacer(),
+                                  GestureDetector(
+                                    onTap: () {
+                                      Fluttertoast.showToast(
+                                          msg: "See All",
+                                          toastLength: Toast.LENGTH_SHORT,
+                                          gravity: ToastGravity.BOTTOM,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor: Colors.black,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0);
+                                      // Navigator.push(
+                                      //   context,
+                                      //   MaterialPageRoute(
+                                      //     builder: (context) => const Home(),
+                                      //   ),
+                                      // );
+                                    },
+                                    child: Container(
+                                      color: Colors.transparent,
+                                      child: Text(
+                                        CustomStrings.seeall,
+                                        style: TextStyle(
+                                            fontFamily: "Gilroy Bold",
+                                            color: notifire.getbluecolor,
+                                            fontSize: height / 45),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                             const SizedBox(
+                              height: 10,
+                            ),
+                             Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 0),
+                              child: CarouselSlider(
+                                options: CarouselOptions(
+                                  height: 200.0,
+                                  autoPlay: true,
+                                  autoPlayCurve: Curves.fastEaseInToSlowEaseOut,
+                                  viewportFraction:
+                                      0.63,
+                                  initialPage: 0,
+                                  enableInfiniteScroll: true,
+                                  scrollDirection: Axis.horizontal,
+                                ),
+                                items: newsItems.map((newsItem) {
+                                  return Builder(
+                                    builder: (BuildContext context) {
+                                        return GestureDetector(
+                                        onTap: () {
+                                          Fluttertoast.showToast(
+                                            msg: "News Item Clicked, Title: ${newsItem['title']}",
+                                            toastLength: Toast.LENGTH_SHORT,
+                                            gravity: ToastGravity.BOTTOM,
+                                            timeInSecForIosWeb: 1,
+                                            backgroundColor: Colors.black,
+                                            textColor: Colors.white,
+                                            fontSize: 16.0);
+                                        },
+                                        child: Container(
+                                          width:
+                                            MediaQuery.of(context).size.width *
+                                              0.6,
+                                          margin: const EdgeInsets.symmetric(
+                                            horizontal: 2.0),
+                                          decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: const BorderRadius.all(
+                                            Radius.circular(8.0)),
+                                          border: Border.all(
+                                            color: Colors.grey,
+                                            width: 1.0,
+                                          ),
+                                          ),
+                                          child: Column(
+                                          crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                          children: [
+                                            ClipRRect(
+                                            borderRadius:
+                                              const BorderRadius.vertical(
+                                                top:
+                                                  Radius.circular(8.0)),
+                                            child: Image.network(
+                                              newsItem['image']!,
+                                              width: double.infinity,
+                                              height: 120,
+                                              fit: BoxFit.cover,
+                                            ),
+                                            ),
+                                            Padding(
+                                            padding:
+                                              const EdgeInsets.all(8.0),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                              children: [
+                                              Text(
+                                                newsItem['title']!,
+                                                style: const TextStyle(
+                                                fontSize: 16.0,
+                                                fontWeight:
+                                                  FontWeight.bold,
+                                                ),
+                                              ),
+                                              const SizedBox(height: 4.0),
+                                              Text(
+                                                newsItem['date']!,
+                                                style: const TextStyle(
+                                                fontSize: 14.0,
+                                                color: Colors.grey,
+                                                ),
+                                              ),
+                                              ],
+                                            ),
+                                            ),
+                                          ],
+                                          ),
+                                        ),
+                                        );
+                                    },
+                                  );
+                                }).toList(),
+                              ),
+                            )
                           ],
                         ),
                         Column(
@@ -177,24 +327,11 @@ class _HomeState extends State<Home> with ChangeNotifier {
                                 final dataItem = category.data[index];
                                 return GestureDetector(
                                   onTap: () {
-                                    // launch(dataItem.appUrl);
-                                    // Navigator.push(
-                                    //   context,
-                                    //   MaterialPageRoute(
-                                    //     builder: (context) => WebViewPage(url: dataItem.appUrl),
-                                    //   ),
-                                    // );
-                                    // Navigator.push(
-                                    //   context,
-                                    //   MaterialPageRoute(
-                                    //     // builder: (context) => WebViewPage(appUrl: dataItem.appUrl),
-                                    //     builder: (context) => WebViewPage(appUrl: 'https://github.com/'),
-                                    //   ),
-                                    // );
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => WebViewScreen(appUrl: dataItem.appUrl),
+                                        builder: (context) => WebViewScreen(
+                                            appUrl: dataItem.appUrl),
                                       ),
                                     );
                                   },
@@ -226,13 +363,14 @@ class _HomeState extends State<Home> with ChangeNotifier {
                                           width: width / 7,
                                           decoration: BoxDecoration(
                                             color: notifire.gettabwhitecolor,
-                                            borderRadius: const BorderRadius.all(
+                                            borderRadius:
+                                                const BorderRadius.all(
                                               Radius.circular(10),
                                             ),
                                             boxShadow: [
                                               BoxShadow(
-                                                color:
-                                                    Colors.white.withOpacity(0.1),
+                                                color: Colors.white
+                                                    .withOpacity(0.1),
                                                 blurRadius: 4.0,
                                                 offset: Offset(0, 2),
                                               ),
@@ -247,9 +385,10 @@ class _HomeState extends State<Home> with ChangeNotifier {
                                               height: 40.0,
                                               width: 40.0,
                                               fit: BoxFit.cover,
-                                              errorBuilder: (BuildContext context,
-                                                  Object error,
-                                                  StackTrace? stackTrace) {
+                                              errorBuilder:
+                                                  (BuildContext context,
+                                                      Object error,
+                                                      StackTrace? stackTrace) {
                                                 return Center(
                                                     child: Icon(Icons.error));
                                               },
@@ -257,7 +396,7 @@ class _HomeState extends State<Home> with ChangeNotifier {
                                           ),
                                         ),
                                         Text(
-                                          dataItem.name,
+                                          dataItem.name.toUpperCase(),
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
                                             fontFamily: "Gilroy Bold",

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:wargaku/view/bottombar/navbottom.dart';
 import 'package:wargaku/view/card/inoutpayment.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_field_style.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:provider/provider.dart';
-import '../../bottombar/bottombar.dart';
 import '../../utils/button.dart';
 import '../../utils/colornotifire.dart';
 import '../../utils/media.dart';
@@ -159,7 +159,7 @@ class _InputPinState extends State<InputPin> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Bottombar(),
+                        builder: (context) => const Navbottom(),
                       ),
                     );
                   },

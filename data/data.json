@@ -1,6 +1,6 @@
     [
         {
-            "category": "kesehatan",
+            "category": "Kesehatan",
             "image_url": "https://picsum.photos/200/300?random=1",
             "data": [
                 {
@@ -21,7 +21,7 @@
             ]
         },
     {
-        "category": "pendidikan",
+        "category": "Pendidikan",
         "image_url": "https://picsum.photos/200/300?random=5",
         "data": [
             {
@@ -37,7 +37,7 @@
         ]
     },
     {
-        "category": "kemiskinan",
+        "category": "Kemiskinan",
         "image_url": "https://picsum.photos/200/300?random=8",
         "data": [
             {
@@ -58,7 +58,7 @@
         ]
     },
     {
-        "category": "perizinan",
+        "category": "Perizinan",
         "image_url": "https://picsum.photos/200/300?random=12",
         "data": [
             {

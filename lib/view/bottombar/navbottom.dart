@@ -12,8 +12,8 @@ class Navbottom extends StatefulWidget {
 }
 
 class _NavbottomState extends State<Navbottom> {
-  // int currIndex = 0;
-  int currIndex = 2;
+  int currIndex = 0;
+  // int currIndex = 2;
 
   @override
   Widget build(BuildContext context) {

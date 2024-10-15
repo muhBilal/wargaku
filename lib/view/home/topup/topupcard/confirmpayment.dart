@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wargaku/view/bottombar/bottombar.dart';
+import 'package:wargaku/view/bottombar/navbottom.dart';
 import 'package:wargaku/view/card/inoutpayment.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/otp_field_style.dart';
@@ -154,7 +154,7 @@ class _ConfirmPaymentState extends State<ConfirmPayment> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const Bottombar(),
+                        builder: (context) => const Navbottom(),
                       ),
                     );
                   },

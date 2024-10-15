@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:wargaku/view/bottombar/bottombar.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:wargaku/view/bottombar/navbottom.dart';
 
 import '../utils/colornotifire.dart';
 import '../utils/media.dart';
@@ -240,7 +240,7 @@ class _EditProfileState extends State<EditProfile> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const Bottombar(),
+                          builder: (context) => const Navbottom(),
                         ),
                       );
                     },
