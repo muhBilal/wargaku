@@ -1,7 +1,8 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:wargaku/provider/auth/auth_provider.dart';
+import 'package:wargaku/view/bottombar/navbottom.dart';
 import 'package:wargaku/view/login/register.dart';
-import 'package:wargaku/view/login/verify.dart';
 import 'package:wargaku/view/home/home.dart';
 import 'package:wargaku/view/profile/forgotpassword.dart';
 import 'package:wargaku/view/utils/button.dart';
@@ -11,6 +12,7 @@ import 'package:wargaku/view/utils/textfeilds.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../utils/colornotifire.dart';
+import 'package:quickalert/quickalert.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -20,16 +22,20 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final TextEditingController _userController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   late ColorNotifire notifire;
 
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
     notifire.setIsDark = previusstate;
-    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
+
     notifire = Provider.of<ColorNotifire>(context, listen: true);
     return Scaffold(
       appBar: AppBar(
@@ -101,12 +107,14 @@ class _LoginState extends State<Login> {
                                   height: height / 70,
                                 ),
                                 Customtextfilds.textField(
-                                    notifire.getdarkscolor,
-                                    notifire.getdarkgreycolor,
-                                    notifire.getbluecolor,
-                                    "images/email.png",
-                                    CustomStrings.emailhint,
-                                    notifire.getdarkwhitecolor),
+                                  notifire.getdarkscolor,
+                                  notifire.getdarkgreycolor,
+                                  notifire.getbluecolor,
+                                  "images/email.png",
+                                  CustomStrings.emailhint,
+                                  notifire.getdarkwhitecolor,
+                                  _userController,
+                                ),
                                 SizedBox(
                                   height: height / 35,
                                 ),
@@ -128,12 +136,15 @@ class _LoginState extends State<Login> {
                                   height: height / 70,
                                 ),
                                 Customtextfilds.textField(
-                                    notifire.getdarkscolor,
-                                    notifire.getdarkgreycolor,
-                                    notifire.getbluecolor,
-                                    "images/password.png",
-                                    CustomStrings.passwordhint,
-                                    notifire.getdarkwhitecolor),
+                                  notifire.getdarkscolor,
+                                  notifire.getdarkgreycolor,
+                                  notifire.getbluecolor,
+                                  "images/password.png",
+                                  CustomStrings.passwordhint,
+                                  notifire.getdarkwhitecolor,
+                                  _passwordController,
+                                  true,
+                                ),
                                 SizedBox(
                                   height: height / 35,
                                 ),
@@ -171,19 +182,44 @@ class _LoginState extends State<Login> {
                                   height: height / 20,
                                 ),
                                 GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => const Home(),
-                                      ),
-                                    );
+                                  onTap: () async {
+                                    FocusScope.of(context).unfocus();
+                                    bool success = await authProvider.login(
+                                        _userController.text,
+                                        _passwordController.text);
+                                    
+                                    if (success) {
+                                      if (!mounted) return;
+                                      QuickAlert.show(
+                                        context: context,
+                                        type: QuickAlertType.success,
+                                        text: 'Login Berhasil!',
+                                      );
+                                      await Future.delayed(
+                                          Duration(seconds: 2));
+                                      if (!mounted) return;
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const Navbottom(),
+                                        ),
+                                      );
+                                    } else {
+                                      QuickAlert.show(
+                                        context: context,
+                                        type: QuickAlertType.error,
+                                        title: 'Oops...',
+                                        text:
+                                            'Login gagal, Silahkan cek username / password anda!',
+                                      );
+                                    }
                                   },
-                                    child: Custombutton.button(
-                                      notifire.getbluecolor,
-                                      CustomStrings.login,
-                                      width / 2,
-                                    ),
+                                  child: Custombutton.button(
+                                    notifire.getbluecolor,
+                                    CustomStrings.login,
+                                    width / 2,
+                                  ),
                                 ),
                                 SizedBox(
                                   height: height / 50,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wargaku/provider/auth/auth_provider.dart';
 import 'package:wargaku/provider/category_provider.dart';
 import 'package:wargaku/view/splashscreen.dart';
 import 'package:wargaku/view/utils/colornotifire.dart';
@@ -10,6 +11,7 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => ColorNotifire()),
         ChangeNotifierProvider(create: (_) => CategoryProvider()),
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
       ],
       child: MyApp(),
     ),
@@ -23,7 +25,6 @@ class MyApp extends StatelessWidget {
       home: const Splashscreen(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        // primaryColor: Colors.white,
         primaryColor: const Color(0xffF7F7F9),
         colorScheme: const ColorScheme.light().copyWith(
           primary: const Color(0xffF7F7F9),

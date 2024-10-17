@@ -36,10 +36,11 @@ dependencies:
   flutter_inappwebview: ^5.7.2
   url_launcher: ^6.0.20
   cupertino_icons: ^1.0.2
+  quickalert: ^1.1.0
   qr_code_scanner: any
   flutter_onboarding_screen: ^2.0.2
   provider: ^6.0.2
-  shared_preferences:
+  shared_preferences: ^2.0.13
   pinput: ^5.0.0
   dotted_border: ^2.0.0+2
   fluttertoast: ^8.0.9

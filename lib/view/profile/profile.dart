@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:quickalert/quickalert.dart';
+import 'package:wargaku/provider/auth/auth_provider.dart';
 import 'package:wargaku/view/login/login.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -31,7 +33,7 @@ class _ProfileState extends State<Profile> {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
     notifire.setIsDark = previusstate;
-    }
+  }
 
   @override
   void initState() {
@@ -42,6 +44,7 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
     notifire = Provider.of<ColorNotifire>(context, listen: true);
     return Scaffold(
       appBar: AppBar(
@@ -148,231 +151,263 @@ class _ProfileState extends State<Profile> {
                     ),
                     SizedBox(height: height / 80),
                     GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const InOutPayment(),
-                          ),
-                        );
-                      },
-                      child: settingtype("images/history.png",
-                          CustomStrings.historytransaction),
-                    ),
-                    SizedBox(
-                      height: height / 80,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: width / 20),
-                      child: Divider(
-                        thickness: 0.6,
-                        color: Colors.grey.withOpacity(0.4),
-                      ),
-                    ),
-                    SizedBox(height: height / 50),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: width / 20,
-                        ),
-                        const Text(
-                          CustomStrings.security,
-                          style: TextStyle(
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: height / 50,
-                    ),
-                    faceid("images/faceid.png", CustomStrings.search),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: width / 20),
-                      child: Divider(
-                        thickness: 0.6,
-                        color: Colors.grey.withOpacity(0.4),
-                      ),
-                    ),
-                    darkmode("images/darkmode.png", CustomStrings.darkmode),
-                    // SizedBox(height: height / 100,),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: width / 20),
-                      child: Divider(
-                        thickness: 0.7,
-                        color: Colors.grey.withOpacity(0.4),
-                      ),
-                    ),
-                    SizedBox(height: height / 80),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ChangePassword(),
-                          ),
-                        );
-                      },
-                      child: settingtype("images/profilepassword.png",
-                          CustomStrings.changepassword),
-                    ),
-                    SizedBox(height: height / 80),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: width / 20),
-                      child: Divider(
-                        thickness: 0.6,
-                        color: Colors.grey.withOpacity(0.4),
-                      ),
-                    ),
-                    SizedBox(height: height / 80),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ForgotPassword(),
-                          ),
-                        );
-                      },
-                      child: settingtype("images/forgotpassword.png",
-                          CustomStrings.forgotpasswords),
-                    ),
-                    SizedBox(
-                      height: height / 80,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: width / 20),
-                      child: Divider(
-                        thickness: 0.6,
-                        color: Colors.grey.withOpacity(0.4),
-                      ),
-                    ),
-                    SizedBox(height: height / 50),
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: width / 20,
-                        ),
-                        const Text(
-                          CustomStrings.general,
-                          style: TextStyle(
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: height / 50,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Notifications(),
-                          ),
-                        );
-                      },
-                      child: settingtype("images/notification.png",
-                          CustomStrings.notification),
-                    ),
-                    SizedBox(height: height / 80),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: width / 20),
-                      child: Divider(
-                        thickness: 0.6,
-                        color: Colors.grey.withOpacity(0.4),
-                      ),
-                    ),
-                    SizedBox(height: height / 80),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const Language(),
-                          ),
-                        );
-                      },
-                      child: settingtype(
-                          "images/languages.png", CustomStrings.languages),
-                    ),
-                    SizedBox(height: height / 80),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: width / 20),
-                      child: Divider(
-                        thickness: 0.6,
-                        color: Colors.grey.withOpacity(0.4),
-                      ),
-                    ),
-                    SizedBox(height: height / 80),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const HelpSupport(
-                              CustomStrings.helpandsupports,
+                     onTap: () async {
+  QuickAlert.show(
+    context: context,
+    type: QuickAlertType.confirm,
+    text: 'Kamu yakin ingin keluar?',
+    confirmBtnText: 'Yes',
+    cancelBtnText: 'No',
+    confirmBtnColor: Colors.green,
+    onConfirmBtnTap: () async {
+      await authProvider.logout();
+
+      Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => Login()),
+        (route) => false,
+      );
+    },
+  );
+},
+
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: width / 20),
+                        child: Row(
+                          children: [
+                            Icon(
+                              Icons.logout,
+                              color: const Color(0xffEB5757),
+                              size: height / 34,
                             ),
-                          ),
-                        );
-                      },
-                      child: settingtype(
-                          "images/helps.png", CustomStrings.helpandsupport),
-                    ),
-                    SizedBox(
-                      height: height / 80,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: width / 20),
-                      child: Divider(
-                        thickness: 0.6,
-                        color: Colors.grey.withOpacity(0.4),
-                      ),
-                    ),
-                    SizedBox(height: height / 80),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                const LegalPolicy(CustomStrings.legalandpolicy),
-                          ),
-                        );
-                      },
-                      child: settingtype(
-                          "images/policy.png", CustomStrings.legalandpolicy),
-                    ),
-                    SizedBox(
-                      height: height / 80,
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: width / 20),
-                      child: Divider(
-                        thickness: 0.6,
-                        color: Colors.grey.withOpacity(0.4),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        _showMyDialog();
-                      },
-                      child: Container(
-                        width: width / 2,
-                        height: height / 20,
-                        color: Colors.transparent,
-                        child: Center(
-                          child: Text(
-                            CustomStrings.logout,
-                            style: TextStyle(
+                            SizedBox(width: width / 30),
+                            Text(
+                              CustomStrings.logout,
+                              style: TextStyle(
                                 color: const Color(0xffEB5757),
+                                fontSize: height / 50,
                                 fontFamily: 'Gilroy Bold',
-                                fontSize: height / 50),
-                          ),
+                              ),
+                            ),
+                            const Spacer(),
+                          ],
                         ),
                       ),
                     ),
+                    SizedBox(
+                      height: height / 80,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: width / 20),
+                      child: Divider(
+                        thickness: 0.6,
+                        color: Colors.grey.withOpacity(0.4),
+                      ),
+                    ),
+                    // SizedBox(height: height / 50),
+                    // Row(
+                    //   children: [
+                    //     SizedBox(
+                    //       width: width / 20,
+                    //     ),
+                    //     const Text(
+                    //       CustomStrings.security,
+                    //       style: TextStyle(
+                    //         color: Colors.grey,
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
+                    // SizedBox(
+                    //   height: height / 50,
+                    // ),
+                    // faceid("images/faceid.png", CustomStrings.search),
+                    // Padding(
+                    //   padding: EdgeInsets.symmetric(horizontal: width / 20),
+                    //   child: Divider(
+                    //     thickness: 0.6,
+                    //     color: Colors.grey.withOpacity(0.4),
+                    //   ),
+                    // ),
+                    // darkmode("images/darkmode.png", CustomStrings.darkmode),
+                    // SizedBox(height: height / 100,),
+                    // Padding(
+                    //   padding: EdgeInsets.symmetric(horizontal: width / 20),
+                    //   child: Divider(
+                    //     thickness: 0.7,
+                    //     color: Colors.grey.withOpacity(0.4),
+                    //   ),
+                    // ),
+                    // SizedBox(height: height / 80),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(
+                    //         builder: (context) => const ChangePassword(),
+                    //       ),
+                    //     );
+                    //   },
+                    //   child: settingtype("images/profilepassword.png",
+                    //       CustomStrings.changepassword),
+                    // ),
+                    // SizedBox(height: height / 80),
+                    // Padding(
+                    //   padding: EdgeInsets.symmetric(horizontal: width / 20),
+                    //   child: Divider(
+                    //     thickness: 0.6,
+                    //     color: Colors.grey.withOpacity(0.4),
+                    //   ),
+                    // ),
+                    // SizedBox(height: height / 80),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(
+                    //         builder: (context) => const ForgotPassword(),
+                    //       ),
+                    //     );
+                    //   },
+                    //   child: settingtype("images/forgotpassword.png",
+                    //       CustomStrings.forgotpasswords),
+                    // ),
+                    // SizedBox(
+                    //   height: height / 80,
+                    // ),
+                    // Padding(
+                    //   padding: EdgeInsets.symmetric(horizontal: width / 20),
+                    //   child: Divider(
+                    //     thickness: 0.6,
+                    //     color: Colors.grey.withOpacity(0.4),
+                    //   ),
+                    // ),
+                    // SizedBox(height: height / 50),
+                    // Row(
+                    //   children: [
+                    //     SizedBox(
+                    //       width: width / 20,
+                    //     ),
+                    //     const Text(
+                    //       CustomStrings.general,
+                    //       style: TextStyle(
+                    //         color: Colors.grey,
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
+                    // SizedBox(
+                    //   height: height / 50,
+                    // ),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(
+                    //         builder: (context) => const Notifications(),
+                    //       ),
+                    //     );
+                    //   },
+                    //   child: settingtype("images/notification.png",
+                    //       CustomStrings.notification),
+                    // ),
+                    // SizedBox(height: height / 80),
+                    // Padding(
+                    //   padding: EdgeInsets.symmetric(horizontal: width / 20),
+                    //   child: Divider(
+                    //     thickness: 0.6,
+                    //     color: Colors.grey.withOpacity(0.4),
+                    //   ),
+                    // ),
+                    // SizedBox(height: height / 80),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(
+                    //         builder: (context) => const Language(),
+                    //       ),
+                    //     );
+                    //   },
+                    //   child: settingtype(
+                    //       "images/languages.png", CustomStrings.languages),
+                    // ),
+                    // SizedBox(height: height / 80),
+                    // Padding(
+                    //   padding: EdgeInsets.symmetric(horizontal: width / 20),
+                    //   child: Divider(
+                    //     thickness: 0.6,
+                    //     color: Colors.grey.withOpacity(0.4),
+                    //   ),
+                    // ),
+                    // SizedBox(height: height / 80),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(
+                    //         builder: (context) => const HelpSupport(
+                    //           CustomStrings.helpandsupports,
+                    //         ),
+                    //       ),
+                    //     );
+                    //   },
+                    //   child: settingtype(
+                    //       "images/helps.png", CustomStrings.helpandsupport),
+                    // ),
+                    // SizedBox(
+                    //   height: height / 80,
+                    // ),
+                    // Padding(
+                    //   padding: EdgeInsets.symmetric(horizontal: width / 20),
+                    //   child: Divider(
+                    //     thickness: 0.6,
+                    //     color: Colors.grey.withOpacity(0.4),
+                    //   ),
+                    // ),
+                    // SizedBox(height: height / 80),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     Navigator.push(
+                    //       context,
+                    //       MaterialPageRoute(
+                    //         builder: (context) =>
+                    //             const LegalPolicy(CustomStrings.legalandpolicy),
+                    //       ),
+                    //     );
+                    //   },
+                    //   child: settingtype(
+                    //       "images/policy.png", CustomStrings.legalandpolicy),
+                    // ),
+                    // SizedBox(
+                    //   height: height / 80,
+                    // ),
+                    // Padding(
+                    //   padding: EdgeInsets.symmetric(horizontal: width / 20),
+                    //   child: Divider(
+                    //     thickness: 0.6,
+                    //     color: Colors.grey.withOpacity(0.4),
+                    //   ),
+                    // ),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     _showMyDialog();
+                    //   },
+                    //   child: Container(
+                    //     width: width / 2,
+                    //     height: height / 20,
+                    //     color: Colors.transparent,
+                    //     child: Center(
+                    //       child: Text(
+                    //         CustomStrings.logout,
+                    //         style: TextStyle(
+                    //             color: const Color(0xffEB5757),
+                    //             fontFamily: 'Gilroy Bold',
+                    //             fontSize: height / 50),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
+
                     SizedBox(
                       height: height / 20,
                     ),

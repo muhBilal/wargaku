@@ -1,12 +1,16 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:wargaku/model/user.dart';
+import 'package:wargaku/provider/auth/auth_provider.dart';
+import 'package:wargaku/service/preferences/user_preferences.dart';
 import 'package:wargaku/view/bottombar/navbottom.dart';
+import 'package:wargaku/view/login/login.dart';
+import 'package:wargaku/view/onbonding.dart';
 import 'package:wargaku/view/utils/colornotifire.dart';
 import 'package:wargaku/view/utils/media.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -22,23 +26,23 @@ class _SplashscreenState extends State<Splashscreen> {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
     notifire.setIsDark = previusstate;
+  }
+
+  void checkUser()async{
+    await Future.delayed(Duration(seconds: 3));
+    User? user = await UserPreferences.getUser();
+    if(user != null){
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Navbottom()));
+    }else{
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Onbonding()));
     }
+  }
 
   @override
   void initState() {
     super.initState();
     getdarkmodepreviousstate();
-    Timer(
-      const Duration(seconds: 3),
-      () => Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          // builder: (context) => const Onbonding(),
-          // builder: (context) => const Bottombar(),
-          builder: (context) => const Navbottom(),
-        ),
-      ),
-    );
+    checkUser();
   }
 
   @override

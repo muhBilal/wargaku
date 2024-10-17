@@ -3,15 +3,17 @@ import 'package:flutter/material.dart';
 import 'media.dart';
 
 class Customtextfilds {
-  static Widget textField(
-      textclr, hintclr, borderclr, img, hinttext, fillcolor) {
+  static Widget textField(textclr, hintclr,
+      borderclr, img, hinttext, fillcolor, [TextEditingController? controller,  bool passwordField = false]) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: width / 18),
       child: Container(
         color: Colors.transparent,
         height: height / 15,
         child: TextField(
+          controller: controller,
           autofocus: false,
+          obscureText: passwordField, 
           style: TextStyle(
             fontSize: height / 50,
             color: textclr,
