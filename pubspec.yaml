@@ -53,6 +53,10 @@ dependencies:
   otp_text_field: ^1.1.3
   webview_flutter: ^4.8.0
   lottie: ^1.2.0
+  searchfield: ^1.1.6
+  dropdown_search: ^5.0.2
+  dio: ^5.1.0
+  #  flutter_dropdown_menu: ^2.0.0
   # fl_chart: ^0.46.0
   # pinput: 1.2.0
   #  slide_to_act:

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:wargaku/provider/auth/auth_provider.dart';
 import 'package:wargaku/view/bottombar/navbottom.dart';
 import 'package:wargaku/view/login/register.dart';
-import 'package:wargaku/view/home/home.dart';
 import 'package:wargaku/view/profile/forgotpassword.dart';
 import 'package:wargaku/view/utils/button.dart';
 import 'package:wargaku/view/utils/media.dart';
@@ -196,7 +194,7 @@ class _LoginState extends State<Login> {
                                         text: 'Login Berhasil!',
                                       );
                                       await Future.delayed(
-                                          Duration(seconds: 2));
+                                          const Duration(seconds: 2));
                                       if (!mounted) return;
                                       Navigator.pushReplacement(
                                         context,

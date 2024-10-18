@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:searchfield/searchfield.dart';
+import 'package:wargaku/model/kategori_models.dart';
+import 'package:wargaku/model/kecamatan.dart';
+import 'package:wargaku/provider/auth/kecamatan_provider.dart';
+import 'package:wargaku/view/login/login.dart';
 import 'package:wargaku/view/login/verify.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -7,25 +13,62 @@ import '../utils/colornotifire.dart';
 import '../utils/media.dart';
 import '../utils/string.dart';
 import '../utils/textfeilds.dart';
+import 'package:dropdown_search/dropdown_search.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
 
   @override
   State<Register> createState() => _RegisterState();
+
+// _SearchFieldExampleState createState() => _SearchFieldExampleState();
 }
 
 class _RegisterState extends State<Register> {
+  final TextEditingController textEditingControllerNama =
+      TextEditingController();
+  final TextEditingController textEditingControllerNIK =
+      TextEditingController();
+  final TextEditingController textEditingControllerNoTelp =
+      TextEditingController();
+  final TextEditingController textEditingControllerAlamat =
+      TextEditingController();
+  final TextEditingController textEditingControllerPassword =
+      TextEditingController();
+  final TextEditingController textEditingControllerKonfirmasiPassword =
+      TextEditingController();
+  final TextEditingController _dateController = TextEditingController();
+  final TextEditingController _kecamatanController = TextEditingController();
+  final TextEditingController _kelurahanController = TextEditingController();
+  final TextEditingController _genderController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+
   late ColorNotifire notifire;
 
   getdarkmodepreviousstate() async {
     final prefs = await SharedPreferences.getInstance();
     bool? previusstate = prefs.getBool("setIsDark");
     notifire.setIsDark = previusstate;
-    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   Provider.of<KecamatanProvider>(context, listen: false).loadKecamatan();
+    // });
+    // final provider = Provider.of<KecamatanProvider>(context, listen: false);
+    // provider.loadKecamatan();
+  }
+
 
   @override
   Widget build(BuildContext context) {
+    final kecamatanProvider = Provider.of<KecamatanProvider>(context);
+    // kecamatanProvider.loadKecamatan;
+
     notifire = Provider.of<ColorNotifire>(context, listen: true);
     return Scaffold(
       appBar: AppBar(
@@ -48,7 +91,7 @@ class _RegisterState extends State<Register> {
             Stack(
               children: [
                 Container(
-                  height: height * 0.9,
+                  height: height * 1.85,
                   width: width,
                   color: Colors.transparent,
                   child: Image.asset(
@@ -65,7 +108,7 @@ class _RegisterState extends State<Register> {
                       children: [
                         Center(
                           child: Container(
-                            height: height / 1.4,
+                            height: height * 1.69,
                             width: width / 1.1,
                             decoration: BoxDecoration(
                               color: notifire.gettabwhitecolor,
@@ -83,7 +126,7 @@ class _RegisterState extends State<Register> {
                                       width: width / 18,
                                     ),
                                     Text(
-                                      CustomStrings.fullname,
+                                      "Email",
                                       style: TextStyle(
                                         color: notifire.getdarkscolor,
                                         fontSize: height / 50,
@@ -95,22 +138,128 @@ class _RegisterState extends State<Register> {
                                   height: height / 70,
                                 ),
                                 Customtextfilds.textField(
+                                  notifire.getdarkscolor,
+                                  notifire.getdarkgreycolor,
+                                  notifire.getbluecolor,
+                                  "images/fullname.png",
+                                  "Masukkan Email",
+                                  notifire.getdarkwhitecolor,
+                                  textEditingControllerNama,
+                                ),
+                                SizedBox(
+                                  height: height / 35,
+                                ),
+                                // NIK
+                                Row(
+                                  children: [
+                                    SizedBox(width: width / 18),
+                                    Text(
+                                      "NIK",
+                                      style: TextStyle(
+                                        color: notifire.getdarkscolor,
+                                        fontSize: height / 50,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: height / 70),
+                                Customtextfilds.textField(
+                                  notifire.getdarkscolor,
+                                  notifire.getdarkgreycolor,
+                                  notifire.getbluecolor,
+                                  "images/fullname.png",
+                                  "Masukkan NIK Anda",
+                                  notifire.getdarkwhitecolor,
+                                  textEditingControllerNIK,
+                                ),
+                                SizedBox(height: height / 35),
+                                //nama
+                                Row(
+                                  children: [
+                                    SizedBox(width: width / 18),
+                                    Text(
+                                      "Nama",
+                                      style: TextStyle(
+                                        color: notifire.getdarkscolor,
+                                        fontSize: height / 50,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: height / 70),
+                                Customtextfilds.textField(
+                                  notifire.getdarkscolor,
+                                  notifire.getdarkgreycolor,
+                                  notifire.getbluecolor,
+                                  "images/fullname.png",
+                                  "Masukkan nama Anda",
+                                  notifire.getdarkwhitecolor,
+                                  textEditingControllerNIK,
+                                ),
+                                SizedBox(height: height / 35),
+
+                                // No Tlp
+                                Row(
+                                  children: [
+                                    SizedBox(width: width / 18),
+                                    Text(
+                                      "No Tlp",
+                                      style: TextStyle(
+                                        color: notifire.getdarkscolor,
+                                        fontSize: height / 50,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: height / 70),
+                                Customtextfilds.numericTextField(
+                                  notifire.getdarkscolor,
+                                  notifire.getdarkgreycolor,
+                                  notifire.getbluecolor,
+                                  "images/fullname.png",
+                                  "Masukkan No Telepon",
+                                  notifire.getdarkwhitecolor,
+                                  textEditingControllerNoTelp,
+                                ),
+
+                                SizedBox(height: height / 35),
+                                // Tanggal Lahir
+                                Row(
+                                  children: [
+                                    SizedBox(width: width / 18),
+                                    Text(
+                                      "Tanggal Lahir",
+                                      style: TextStyle(
+                                        color: notifire.getdarkscolor,
+                                        fontSize: height / 50,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: height / 70),
+                                GestureDetector(
+                                  onTap: () async {
+                                    // debugPrint("okeoke");
+                                  },
+                                  child: Customtextfilds.dateInputField(
                                     notifire.getdarkscolor,
                                     notifire.getdarkgreycolor,
                                     notifire.getbluecolor,
                                     "images/fullname.png",
-                                    CustomStrings.fullnamehere,
-                                    notifire.getdarkwhitecolor),
-                                SizedBox(
-                                  height: height / 35,
+                                    'Pilih tanggal Lahir',
+                                    Colors.white,
+                                    _dateController,
+                                    context,
+                                  ),
                                 ),
+                                SizedBox(height: height / 35),
+
+                                // kecamatan
                                 Row(
                                   children: [
-                                    SizedBox(
-                                      width: width / 18,
-                                    ),
+                                    SizedBox(width: width / 18),
                                     Text(
-                                      CustomStrings.email,
+                                      "Kecamatan",
                                       style: TextStyle(
                                         color: notifire.getdarkscolor,
                                         fontSize: height / 50,
@@ -118,26 +267,55 @@ class _RegisterState extends State<Register> {
                                     ),
                                   ],
                                 ),
-                                SizedBox(
-                                  height: height / 70,
+                                SizedBox(height: height / 70),
+                                GestureDetector(
+                                  onTap: () async {
+                                    // debugPrint("okeoke");
+                                  },
+                                  child: Customtextfilds.dateInputField(
+                                    notifire.getdarkscolor,
+                                    notifire.getdarkgreycolor,
+                                    notifire.getbluecolor,
+                                    "images/fullname.png",
+                                    'Pilih tanggal Lahir',
+                                    Colors.white,
+                                    _dateController,
+                                    context,
+                                  ),
                                 ),
+                                SizedBox(height: height / 35),
+
+                                //kelurahan
+                                Row(
+                                  children: [
+                                    SizedBox(width: width / 18),
+                                    Text(
+                                      "Kelurahan",
+                                      style: TextStyle(
+                                        color: notifire.getdarkscolor,
+                                        fontSize: height / 50,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: height / 70),
                                 Customtextfilds.textField(
-                                    notifire.getdarkscolor,
-                                    notifire.getdarkgreycolor,
-                                    notifire.getbluecolor,
-                                    "images/email.png",
-                                    CustomStrings.emailhint,
-                                    notifire.getdarkwhitecolor),
-                                SizedBox(
-                                  height: height / 35,
+                                  notifire.getdarkscolor,
+                                  notifire.getdarkgreycolor,
+                                  notifire.getbluecolor,
+                                  "images/fullname.png",
+                                  "Masukkan Kelurahan Anda",
+                                  notifire.getdarkwhitecolor,
+                                  textEditingControllerNIK,
                                 ),
+                                SizedBox(height: height / 35),
+
+                                // Alamat
                                 Row(
                                   children: [
-                                    SizedBox(
-                                      width: width / 18,
-                                    ),
+                                    SizedBox(width: width / 18),
                                     Text(
-                                      CustomStrings.password,
+                                      "Alamat",
                                       style: TextStyle(
                                         color: notifire.getdarkscolor,
                                         fontSize: height / 50,
@@ -145,26 +323,24 @@ class _RegisterState extends State<Register> {
                                     ),
                                   ],
                                 ),
-                                SizedBox(
-                                  height: height / 70,
+                                SizedBox(height: height / 70),
+                                Customtextfilds.textField(
+                                  notifire.getdarkscolor,
+                                  notifire.getdarkgreycolor,
+                                  notifire.getbluecolor,
+                                  "images/fullname.png",
+                                  "Masukkan Alamat",
+                                  notifire.getdarkwhitecolor,
+                                  textEditingControllerAlamat,
                                 ),
-                                textfieldss(
-                                    notifire.getdarkscolor,
-                                    notifire.getdarkgreycolor,
-                                    notifire.getbluecolor,
-                                    "images/password.png",
-                                    CustomStrings.createpassword,
-                                    "images/show.png"),
-                                SizedBox(
-                                  height: height / 35,
-                                ),
+                                SizedBox(height: height / 35),
+
+                                // Gender
                                 Row(
                                   children: [
-                                    SizedBox(
-                                      width: width / 18,
-                                    ),
+                                    SizedBox(width: width / 18),
                                     Text(
-                                      CustomStrings.confirmpassword,
+                                      "Jenis Kelamin",
                                       style: TextStyle(
                                         color: notifire.getdarkscolor,
                                         fontSize: height / 50,
@@ -172,19 +348,68 @@ class _RegisterState extends State<Register> {
                                     ),
                                   ],
                                 ),
-                                SizedBox(
-                                  height: height / 70,
+                                SizedBox(height: height / 70),
+                                Customtextfilds.textField(
+                                  notifire.getdarkscolor,
+                                  notifire.getdarkgreycolor,
+                                  notifire.getbluecolor,
+                                  "images/fullname.png",
+                                  "Masukkan Jenis Kelamin",
+                                  notifire.getdarkwhitecolor,
+                                  null, // Tambahkan dropdown atau widget lain untuk memilih jenis kelamin
                                 ),
-                                textfieldss(
-                                    notifire.getdarkscolor,
-                                    notifire.getdarkgreycolor,
-                                    notifire.getbluecolor,
-                                    "images/password.png",
-                                    CustomStrings.retypepassword,
-                                    "images/show.png"),
-                                SizedBox(
-                                  height: height / 35,
+                                SizedBox(height: height / 35),
+
+                                // Password
+                                Row(
+                                  children: [
+                                    SizedBox(width: width / 18),
+                                    Text(
+                                      "Kata Sandi",
+                                      style: TextStyle(
+                                        color: notifire.getdarkscolor,
+                                        fontSize: height / 50,
+                                      ),
+                                    ),
+                                  ],
                                 ),
+                                SizedBox(height: height / 70),
+                                Customtextfilds.textField(
+                                  notifire.getdarkscolor,
+                                  notifire.getdarkgreycolor,
+                                  notifire.getbluecolor,
+                                  "images/password.png",
+                                  "Masukkan Kata Sandi",
+                                  notifire.getdarkwhitecolor,
+                                  textEditingControllerPassword,
+                                ),
+                                SizedBox(height: height / 35),
+
+                                // Konfirmasi Kata Sandi
+                                Row(
+                                  children: [
+                                    SizedBox(width: width / 18),
+                                    Text(
+                                      "Konfirmasi Kata Sandi",
+                                      style: TextStyle(
+                                        color: notifire.getdarkscolor,
+                                        fontSize: height / 50,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: height / 70),
+                                Customtextfilds.textField(
+                                  notifire.getdarkscolor,
+                                  notifire.getdarkgreycolor,
+                                  notifire.getbluecolor,
+                                  "images/password.png",
+                                  "Masukkan Ulang Kata Sandi",
+                                  notifire.getdarkwhitecolor,
+                                  textEditingControllerKonfirmasiPassword,
+                                ),
+                                SizedBox(height: height / 35),
+
                                 GestureDetector(
                                   onTap: () {
                                     Navigator.push(
@@ -195,9 +420,10 @@ class _RegisterState extends State<Register> {
                                     );
                                   },
                                   child: Custombutton.button(
-                                      notifire.getbluecolor,
-                                      CustomStrings.registeraccount,
-                                      width / 2),
+                                    notifire.getbluecolor,
+                                    "Daftar Akun",
+                                    width / 2,
+                                  ),
                                 ),
                               ],
                             ),
@@ -205,8 +431,8 @@ class _RegisterState extends State<Register> {
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: height / 40,
+                    const SizedBox(
+                      height: 10,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -221,11 +447,20 @@ class _RegisterState extends State<Register> {
                         SizedBox(
                           width: width / 100,
                         ),
-                        Text(
-                          CustomStrings.loginhear,
-                          style: TextStyle(
-                            color: notifire.getdarkscolor,
-                            fontSize: height / 50,
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const Login(),
+                                ));
+                          },
+                          child: Text(
+                            CustomStrings.loginhear,
+                            style: TextStyle(
+                              color: notifire.getdarkscolor,
+                              fontSize: height / 50,
+                            ),
                           ),
                         ),
                       ],
@@ -239,7 +474,7 @@ class _RegisterState extends State<Register> {
                     ),
                     Center(
                       child: Image.asset(
-                        "images/logos.png",
+                        "images/icon/ssw.png",
                         height: height / 8,
                       ),
                     ),
@@ -248,55 +483,6 @@ class _RegisterState extends State<Register> {
               ],
             ),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget textfieldss(textclr, hintclr, borderclr, img, hinttext, img2) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: width / 18),
-      child: Container(
-        color: Colors.transparent,
-        height: height / 15,
-        child: TextField(
-          autofocus: false,
-          style: TextStyle(
-            fontSize: height / 50,
-            color: textclr,
-          ),
-          decoration: InputDecoration(
-            hintText: hinttext,
-            filled: true,
-            fillColor: notifire.getwhite,
-            suffixIcon: Padding(
-              padding: EdgeInsets.symmetric(
-                  vertical: height / 50, horizontal: height / 70),
-              child: Image.asset(
-                img2,
-                height: height / 50,
-              ),
-            ),
-            prefixIcon: Padding(
-              padding: EdgeInsets.symmetric(
-                  vertical: height / 100, horizontal: height / 70),
-              child: Image.asset(
-                img,
-                height: height / 30,
-              ),
-            ),
-            hintStyle: TextStyle(color: hintclr, fontSize: height / 60),
-            focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: borderclr),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.grey.withOpacity(0.4),
-              ),
-              borderRadius: BorderRadius.circular(10),
-            ),
-          ),
         ),
       ),
     );

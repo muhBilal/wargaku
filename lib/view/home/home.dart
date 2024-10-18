@@ -1,15 +1,12 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:wargaku/provider/category_provider.dart';
-import 'package:wargaku/view/home/scanpay/scan.dart';
 import 'package:wargaku/view/utils/colornotifire.dart';
 import 'package:wargaku/view/utils/media.dart';
 import 'package:wargaku/view/utils/string.dart';
 import 'package:wargaku/view/webViewScreen.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:wargaku/view/utils/weather_chart.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -350,7 +347,7 @@ class _HomeState extends State<Home> with ChangeNotifier {
                                         BoxShadow(
                                           color: Colors.white.withOpacity(0.2),
                                           blurRadius: 8.0,
-                                          offset: Offset(0, 4),
+                                          offset: const Offset(0, 4),
                                         ),
                                       ],
                                     ),
@@ -372,7 +369,7 @@ class _HomeState extends State<Home> with ChangeNotifier {
                                                 color: Colors.white
                                                     .withOpacity(0.1),
                                                 blurRadius: 4.0,
-                                                offset: Offset(0, 2),
+                                                offset: const Offset(0, 2),
                                               ),
                                             ],
                                           ),
@@ -389,7 +386,7 @@ class _HomeState extends State<Home> with ChangeNotifier {
                                                   (BuildContext context,
                                                       Object error,
                                                       StackTrace? stackTrace) {
-                                                return Center(
+                                                return const Center(
                                                     child: Icon(Icons.error));
                                               },
                                             ),

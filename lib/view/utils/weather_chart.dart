@@ -5,7 +5,7 @@ class WeatherChart extends StatelessWidget {
   final String condition;
   final String location;
 
-  const WeatherChart({
+  const WeatherChart({super.key, 
     required this.temperature,
     required this.condition,
     required this.location,

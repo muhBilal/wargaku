@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:wargaku/provider/auth/auth_provider.dart';
+import 'package:wargaku/provider/auth/kecamatan_provider.dart';
 import 'package:wargaku/provider/category_provider.dart';
 import 'package:wargaku/view/splashscreen.dart';
 import 'package:wargaku/view/utils/colornotifire.dart';
@@ -12,13 +13,16 @@ void main() {
         ChangeNotifierProvider(create: (_) => ColorNotifire()),
         ChangeNotifierProvider(create: (_) => CategoryProvider()),
         ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => KecamatanProvider()),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

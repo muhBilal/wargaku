@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:wargaku/view/home/topup/topupcard/topcard.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../utils/colornotifire.dart';
 import '../utils/media.dart';
-import '../utils/string.dart';
 
 class Instruction extends StatefulWidget {
   const Instruction({super.key});

@@ -5,17 +5,10 @@ import 'package:wargaku/provider/auth/auth_provider.dart';
 import 'package:wargaku/view/login/login.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../card/inoutpayment.dart';
 import '../utils/colornotifire.dart';
 import '../utils/media.dart';
 import '../utils/string.dart';
-import 'changepassword.dart';
-import 'forgotpassword.dart';
-import 'helpsupport.dart';
-import 'language.dart';
-import 'legalandpolicy.dart';
 import 'myprofile.dart';
-import 'notification.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -163,7 +156,7 @@ class _ProfileState extends State<Profile> {
       await authProvider.logout();
 
       Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => Login()),
+        MaterialPageRoute(builder: (context) => const Login()),
         (route) => false,
       );
     },
